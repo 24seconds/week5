@@ -4,11 +4,12 @@
   justify-content:flex-start;
   align-items: flex-start;
   background: rgb(255, 255, 255);
-  width: 200px;
-  height:80px;
+  width: 98%;
+  height:10hv;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   margin: 0 auto;
-  margin-top : 4rem;
+  margin-bottom: 0.1rem;
+
 }
 
 .DateItem-day {

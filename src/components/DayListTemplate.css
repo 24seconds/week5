@@ -1,0 +1,9 @@
+.DayListTemplate-template {
+  display: flex;
+  flex-direction: row;
+  background: rgb(255, 9, 9);
+
+  width: 100%;
+  height: 10%;
+
+}

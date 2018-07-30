@@ -3,13 +3,9 @@ import './DateItem.css';
 
 class DateItem extends Component {
 
-  state = {
-    day: 'Fri',
-    date: '27'
-  }
 
   render() {
-    const {day, date} = this.state;
+    const {day, date} = this.props;
 
     return (<div className="DateItem-template">
       <div className="DateItem-day">
