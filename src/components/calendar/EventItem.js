@@ -12,7 +12,7 @@ class EventItem extends Component {
           {starTime} ~ {endTime}
         </div>
         <div className = "EvnetItem-location">
-          {location}
+          {location} 
         </div>
         <div className = "EventItem-title">
           {eventTitle}
