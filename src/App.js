@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
+
+import {Popover, OverlayTrigger, popoverHoverFocus, Button, ButtonToolbar} from 'react-bootstrap';
+
 import DateItem from './components/calendar/DateItem'
 import EventItem from './components/calendar/EventItem'
 import EventList  from './components/calendar/EventList'
 import OnedayItem from './components/calendar/OnedayItem'
 import DayListTemplate from './components/calendar/DayListTemplate'
 
-import PrevButton from './components/topbar/PrevButton'
+import PrevButton from './components/TopPart/PrevButton'
+import NextButton from './components/TopPart/NextButton'
+import SearchBar from './components/TopPart/SearchBar'
+import TodayButton from './components/TopPart/TodayButton'
+import MonthText from './components/TopPart/MonthText'
+
 import EventInfo from './components/EventInfo/EventInfo'
 import Map from './components/Map/Map'
+
+import BodyForm from './components/BodyPart/BodyForm'
+
 
 class App extends Component {
   state = {
@@ -25,23 +36,51 @@ class App extends Component {
        markers: [
          { text: "교수회관", lat: 36.375, lng: 127.364785 },
          { text: "E5", lat: 36.368157, lng: 127.363695 },
-       ]
+       ],
+       month : 'Jul-Aug',
+       year : '2018'
 }
 
   render() {
-    const {title, representation, startTime, endTime, place, summary, tags, markers} = this.state;
+    const {title, representation, startTime, endTime,
+       place, summary, tags, markers,
+     month, year} = this.state;
+    const popoverClick = (
+      <Popover id="popover-trigger-click" title="Popover bottom">
+        <strong>Holy guacamole!</strong> Check this info.
+        </Popover>
+      );
+
+      const popoverHoverFocus = (
+        <Popover id="popover-trigger-hover-focus" title="Popover bottom">
+          <strong>Holy guacamole!</strong> Check this info.
+          </Popover>
+        );
+
+        const popoverFocus = (
+          <Popover id="popover-trigger-focus" title="Popover bottom">
+            <strong>Holy guacamole!</strong> Check this info.
+  </Popover>
+);
+
+const popoverClickRootClose = (
+  <Popover id="popover-trigger-click-root-close" title="Popover bottom">
+    <strong>Holy guacamole!</strong> Check this info.
+  </Popover>
+);
+
+
 
     return (
       <div>
-        <button>asdfasdfasdf</button>
-
+        <TodayButton/>
         <PrevButton/>
-        <DayListTemplate/>
-        <EventInfo title={title} representation ={representation} startTime = {startTime}
-          endTime ={endTime} place ={place} summary={summary} tags={tags}/>
-        <Map markers ={markers}/>
+        <NextButton/>
+        <MonthText month={month} year={year}/>
+        <SearchBar/>
 
-
+        <BodyForm title={title} representation={representation} startTime={startTime} endTime={endTime}
+          place={place} summary={summary} tags={tags} markers={markers}/>
 
       </div>
     );
