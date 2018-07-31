@@ -1,4 +1,7 @@
-.SearchBar-template{
+.ButtonForm-template{
   display: flex;
   flex-direction: row;
+
+  width: 50%;
+
 }

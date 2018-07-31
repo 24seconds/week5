@@ -5,9 +5,9 @@ class SearchBar extends Component {
   render(){
 
     return(
-      <div className="form">
+      <div className="SearchBar-template">
         <input />
-        <div className="create-button">
+        <div className="SearchBar-create-button">
           추가
         </div>
       </div>

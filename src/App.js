@@ -13,6 +13,8 @@ import NextButton from './components/TopPart/NextButton'
 import SearchBar from './components/TopPart/SearchBar'
 import TodayButton from './components/TopPart/TodayButton'
 import MonthText from './components/TopPart/MonthText'
+import ButtonDropDown from './components/TopPart/ButtonDropDown'
+import BarForm from './components/TopPart/BarForm'
 
 import EventInfo from './components/EventInfo/EventInfo'
 import Map from './components/Map/Map'
@@ -72,12 +74,8 @@ const popoverClickRootClose = (
 
 
     return (
-      <div>
-        <TodayButton/>
-        <PrevButton/>
-        <NextButton/>
-        <MonthText month={month} year={year}/>
-        <SearchBar/>
+      <div>        
+        <BarForm/>
 
         <BodyForm title={title} representation={representation} startTime={startTime} endTime={endTime}
           place={place} summary={summary} tags={tags} markers={markers}/>
