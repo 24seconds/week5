@@ -11,16 +11,16 @@ class DayListTemplate extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldComponentUpdate');
-    console.log(this.props.startDate.format("YYYYMMDD"));
-    console.log(nextProps.startDate.format("YYYYMMDD"));
-    console.log(this.props.startDate.format("YYYYMMDD")===nextProps.startDate.format("YYYYMMDD"));
+    // console.log('shouldComponentUpdate');
+    // console.log(this.props.startDate.format("YYYYMMDD"));
+    // console.log(nextProps.startDate.format("YYYYMMDD"));
+    // console.log(this.props.startDate.format("YYYYMMDD")===nextProps.startDate.format("YYYYMMDD"));
     if(this.props.startDate.format("YYYYMMDD")===nextProps.startDate.format("YYYYMMDD")){
-      console.log('trueeeeeeeeeeeeeeeeeeeeeeeeeeee');
+      // console.log('trueeeeeeeeeeeeeeeeeeeeeeeeeeee');
       return true;
     }
     else {
-      console.log('falsssssssssssssssssssssssse');
+      // console.log('falsssssssssssssssssssssssse');
       this._resetState();
       this._getEvents(nextProps.startDate);
       return true;
@@ -37,23 +37,23 @@ class DayListTemplate extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log('componentWillUpdate');
-    console.log(this.props.startDate);
-    console.log(nextProps.startDate);
+    // console.log('componentWillUpdate');
+    // console.log(this.props.startDate);
+    // console.log(nextProps.startDate);
     return true;
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
-    console.log(prevProps.startDate);
+    // console.log('componentDidUpdate');
+    // console.log(prevProps.startDate);
     return true;
   }
 
   componentDidMount(){
-    console.log('DayListTemplate');
-    console.log(this.props.startDate);
-    console.log(this.props.startDate._i);
-    console.log(this.props.currentDate);
+    // console.log('DayListTemplate');
+    // console.log(this.props.startDate);
+    // console.log(this.props.startDate._i);
+    // console.log(this.props.currentDate);
     this._getEvents(this.props.startDate);
   }
 

@@ -17,7 +17,7 @@ class ButtonForm extends Component {
         <TodayButton handleCurrentweekUpdate={handleCurrentweekUpdate} startDate={startDate}/>
         <NaviButtonForm startDate={startDate}
            handleNextweekUpdate={handleNextweekUpdate} handlePrevweekUpdate={handlePrevweekUpdate}/>
-        <MonthText month={month} year={year}/>
+         <MonthText month={month} year={year} startDate={startDate}/>
       </div>
     );
   }
