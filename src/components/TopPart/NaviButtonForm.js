@@ -7,12 +7,13 @@ import NextButton from './NextButton'
 class NaviButtonForm extends Component{
 
   render(){
+    const {handleNextweekUpdate, currentDate} =this.props;
 
 
     return(
       <div className="NaviButtonForm-template">
-        <PrevButton/>
-        <NextButton/>
+        <PrevButton />
+        <NextButton currentDate={currentDate} handleNextweekUpdate={handleNextweekUpdate}/>
       </div>
 
     );

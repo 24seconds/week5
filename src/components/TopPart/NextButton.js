@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
-import {Image} from 'react-bootstrap';
+import {Image, Button} from 'react-bootstrap';
 import './NextButton.css';
 
 class NextButton extends Component{
   render(){
 
+    const {currentDate, handleNextweekUpdate} = this.props;    
+
     return(
       <div>
-        <Image src={require('../../images/next.png')} responsive />
+        <Button bsStyle="link" onClick = {() => handleNextweekUpdate(currentDate)}>
+          <Image src={require('../../images/next.png')} responsive />
+        </Button>
+
       </div>
     );
   }

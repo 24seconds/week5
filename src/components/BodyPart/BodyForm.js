@@ -9,6 +9,9 @@ import DetailModal from '../DetailModal/DetailModal';
 
 
 class BodyForm extends Component {
+
+
+
   constructor(props) {
     super(props);
 
@@ -44,10 +47,10 @@ class BodyForm extends Component {
 
   render() {
 
-    const {title, representation, startTime, endTime, place, summary, tags, markers, handleMouseEnterToItem, startDate} = this.props;
+    const {title, representation, startTime, endTime, place, summary, tags, markers, handleMouseEnterToItem, startDate, currentDate} = this.props;
     return(
       <div className="BodyForm-template">
-        <DayListTemplate startDate={startDate} handleMouseEnterToItem={handleMouseEnterToItem} handleShow={this.handleShow}/>
+        <DayListTemplate startDate={startDate} handleMouseEnterToItem={handleMouseEnterToItem} handleShow={this.handleShow} currentDate={currentDate}/>
         <InfoForm title={title} representation={representation} startTime={startTime} endTime={endTime}
           place={place} summary={summary} tags={tags} markers={markers} />
         <DetailModal show={this.state.show} handleClose={this.handleClose} title={title} representation={representation} startTime={startTime} endTime={endTime}

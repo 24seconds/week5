@@ -9,11 +9,13 @@ class ButtonForm extends Component {
 
   render(){
 
+    const {month, year, handleNextweekUpdate, currentDate} = this.props;
+
     return(
       <div className="ButtonForm-template">
         <TodayButton/>
-        <NaviButtonForm/>
-        <MonthText/>
+        <NaviButtonForm currentDate={currentDate} handleNextweekUpdate={handleNextweekUpdate}/>
+        <MonthText month={month} year={year}/>
       </div>
     );
   }

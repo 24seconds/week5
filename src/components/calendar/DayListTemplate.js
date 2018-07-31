@@ -6,20 +6,64 @@ import './DayListTemplate.css';
 class DayListTemplate extends Component {
 
   state = {
+
     dayLists : []
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate');
+    console.log(this.props.startDate.format("YYYYMMDD"));
+    console.log(nextProps.startDate.format("YYYYMMDD"));
+    console.log(this.props.startDate.format("YYYYMMDD")===nextProps.startDate.format("YYYYMMDD"));
+    if(this.props.startDate.format("YYYYMMDD")===nextProps.startDate.format("YYYYMMDD")){
+      console.log('trueeeeeeeeeeeeeeeeeeeeeeeeeeee');
+      return true;
+    }
+    else {
+      console.log('falsssssssssssssssssssssssse');
+      this._resetState();
+      this._getEvents(nextProps.startDate);
+      return true;
+    }
+    // this._getEvents();
+    return true;
+  }
+
+  _resetState(){
+    this.setState({
+      dayLists : []
+      }
+    )
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('componentWillUpdate');
+    console.log(this.props.startDate);
+    console.log(nextProps.startDate);
+    return true;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+    console.log(prevProps.startDate);
+    return true;
+  }
+
   componentDidMount(){
-    this._getEvents();
+    console.log('DayListTemplate');
+    console.log(this.props.startDate);
+    console.log(this.props.startDate._i);
+    console.log(this.props.currentDate);
+    this._getEvents(this.props.startDate);
   }
 
-  _getEvents = async () => {
-    await this._callApi();
+  _getEvents = async (startDate) => {
+    await this._callApi(startDate);
   }
 
-  _callApi = () => {
-    const {startDate} = this.props;
-
+  _callApi = (startDate) => {
+    const { currentDate} = this.props;
+    console.log('call API,-----',startDate,currentDate);
     for(let i=0; i<7; i++) {
       let date = startDate.clone();
       date.add('days', i);
@@ -29,9 +73,9 @@ class DayListTemplate extends Component {
         }
       })
       .then(response => {
-        console.log('====================================');
-        console.log(response);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log(response);
+        // console.log('====================================');
 
         const items = response.data.items;
         let events = [];
@@ -56,9 +100,9 @@ class DayListTemplate extends Component {
       return a.date<b.date?-1:a.date>b.date?1:0;
     });
 
-    console.log('=============await결과=============');
-    console.log(dayLists);
-    console.log('====================================');
+    // console.log('=============await결과=============');
+    // console.log(dayLists);
+    // console.log('====================================');
 
     const onedayItems = dayLists.map(
       ({oneItemId, date, events }) => (

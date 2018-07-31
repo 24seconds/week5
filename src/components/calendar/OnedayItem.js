@@ -10,8 +10,8 @@ class OnedayItem extends Component {
 
   render (){
     const {date, events, oneItemId, handleMouseEnterToItem, handleShow} = this.props;
-    console.log('OnedayItem');
-    console.log(date.format("YYYY-MM-DD"));
+    // console.log('OnedayItem');
+    // console.log(date.format("YYYY-MM-DD"));
 
 
     return(

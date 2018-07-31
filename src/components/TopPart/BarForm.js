@@ -9,9 +9,11 @@ class BarForm extends Component{
 
   render(){
 
+    const {month, year, currentDate,handleNextweekUpdate} = this.props;
+
     return(
       <div className="BarForm-template">
-        <ButtonForm/>
+        <ButtonForm month={month} year={year} currentDate={currentDate} handleNextweekUpdate={handleNextweekUpdate}/>
         <SearchBar/>
         <ButtonDropDown/>
       </div>
