@@ -5,11 +5,11 @@ import './NextButton.css';
 class NextButton extends Component{
   render(){
 
-    const {currentDate, handleNextweekUpdate} = this.props;    
+    const {startDate, handleNextweekUpdate} = this.props;
 
     return(
       <div>
-        <Button bsStyle="link" onClick = {() => handleNextweekUpdate(currentDate)}>
+        <Button bsStyle="link" onClick = {() => handleNextweekUpdate(startDate)}>
           <Image src={require('../../images/next.png')} responsive />
         </Button>
 
