@@ -15,14 +15,16 @@ class DayListTemplate extends Component {
     // console.log(this.props.startDate.format("YYYYMMDD"));
     // console.log(nextProps.startDate.format("YYYYMMDD"));
     // console.log(this.props.startDate.format("YYYYMMDD")===nextProps.startDate.format("YYYYMMDD"));
-    if(this.props.startDate.format("YYYYMMDD")===nextProps.startDate.format("YYYYMMDD")){
+    if(this.props.startDate.format("YYYYMMDD") === nextProps.startDate.format("YYYYMMDD")
+        && this.props.filter_keywords === nextProps.filter_keywords && this.props.filter_tags === nextProps.filter_tags) {
       // console.log('trueeeeeeeeeeeeeeeeeeeeeeeeeeee');
+      // this._getEvents(nextProps.startDate, nextProps.filter_tags, nextProps.filter_keywords);
       return true;
     }
     else {
       // console.log('falsssssssssssssssssssssssse');
       this._resetState();
-      this._getEvents(nextProps.startDate);
+      this._getEvents(nextProps.startDate, nextProps.filter_tags, nextProps.filter_keywords);
       return true;
     }
     // this._getEvents();
@@ -54,23 +56,23 @@ class DayListTemplate extends Component {
     // console.log(this.props.startDate);
     // console.log(this.props.startDate._i);
     // console.log(this.props.currentDate);
-    this._getEvents(this.props.startDate);
+    this._getEvents(this.props.startDate, this.props.filter_tags, this.props.filter_keywords);
   }
 
-  _getEvents = async (startDate) => {
-    await this._callApi(startDate);
+  _getEvents = async (startDate, filter_tags, filter_keywords) => {
+    await this._callApi(startDate, filter_tags, filter_keywords);
   }
 
-  _callApi = (startDate) => {
-    const { currentDate} = this.props;
+  _callApi = (startDate, filter_tags, filter_keywords) => {
+    const { currentDate } = this.props;
     console.log('call API,-----',startDate,currentDate);
     for(let i=0; i<7; i++) {
       let date = startDate.clone();
       date.add('days', i);
-      axios.get('http://52.231.64.73:3001/events/itemsbydate', {
-        params: {
-          date: date.format("YYYY-MM-DD")
-        }
+      axios.post('http://52.231.64.73:3002/events/itemsbydate2', {
+          date: date.format("YYYY-MM-DD"),
+          filter_keywords: filter_keywords,
+          filter_tags: filter_tags
       })
       .then(response => {
         // console.log('====================================');
@@ -92,8 +94,7 @@ class DayListTemplate extends Component {
     }
   }
 
-
-  render(){
+  render() {
     const {handleMouseEnterToItem, handleShow} = this.props;
     const {dayLists} = this.state;
     dayLists.sort(function (a,b){

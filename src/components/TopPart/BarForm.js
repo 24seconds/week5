@@ -10,7 +10,7 @@ class BarForm extends Component{
   render(){
 
     const {month, year, startDate,
-      handleNextweekUpdate, handlePrevweekUpdate, handleCurrentweekUpdate} = this.props;
+      handleNextweekUpdate, handlePrevweekUpdate, handleCurrentweekUpdate, handleSearchUpdate} = this.props;
 
     return(
       <div className="BarForm-template">
@@ -18,7 +18,7 @@ class BarForm extends Component{
            handleNextweekUpdate={handleNextweekUpdate}
            handlePrevweekUpdate={handlePrevweekUpdate}
            handleCurrentweekUpdate={handleCurrentweekUpdate}/>
-        <SearchBar/>
+        <SearchBar handleSearchUpdate={handleSearchUpdate}/>
         <ButtonDropDown/>
       </div>
 
