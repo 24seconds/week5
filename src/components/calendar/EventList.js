@@ -5,7 +5,7 @@ class EventList extends Component {
 
 
   render(){
-    const {events, handleMouseEnterToItem} = this.props;
+    const {events, handleMouseEnterToItem, handleShow} = this.props;
 
     const eventItem = events.map(
       ({eventId, startTime, endTime, location, eventTitle}) => (
@@ -15,7 +15,8 @@ class EventList extends Component {
           endTime = {endTime}
           location = {location}
           eventTitle = {eventTitle}
-          handleMouseEnterToItem = {handleMouseEnterToItem}/>
+          handleMouseEnterToItem = {handleMouseEnterToItem}
+          handleShow = {handleShow} />
       )
     );
 
