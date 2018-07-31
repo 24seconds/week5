@@ -4,7 +4,11 @@ import './BodyForm.css';
 import DayListTemplate from '../calendar/DayListTemplate'
 import InfoForm from '../BodyPart/InfoForm'
 
+
 class BodyForm extends Component {
+
+
+
   render(){
     const {title, representation, startTime, endTime, place, summary, tags, markers, handleMouseEnterToItem, startDate} = this.props;
     return(
