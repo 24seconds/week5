@@ -9,7 +9,7 @@ class InfoForm extends Component {
     const {title, representation, startTime, endTime, place, summary, tags, markers} = this.props;
 
     return(
-      <div claaName="InfoForm-template">
+      <div className="InfoForm-template">
         <Map markers = {markers}/>
         <EventInfo title={title} representation={representation} startTime={startTime}
           endTime={endTime} place={place} summary={summary} tags={tags}/>

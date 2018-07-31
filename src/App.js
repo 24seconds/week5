@@ -37,58 +37,92 @@ class App extends Component {
       summary: "",
       tags: [],
       markers: [],
-      startDate: moment("2018-07-27"),
+      startDate: moment(moment().startOf('week').format('YYYY-MM-DD')),
+      currentDate:moment(moment().startOf('week').format('YYYY-MM-DD')),
       month:"Jul-Aug",
-      yaer:"2018"
+      yaer:"2018",
+      dayLists:[],
+      filter_tags:[],
+      filter_keywords:[]
     }
 
     // this.updateEventInfo = this.updateEventInfo.bind(this);
     this.handleMouseEnterToItem = this.handleMouseEnterToItem.bind(this);
+    this.handleNextweekUpdate = this.handleNextweekUpdate.bind(this);
+    this.handlePrevweekUpdate = this.handlePrevweekUpdate.bind(this);
+    this.handleCurrentweekUpdate = this.handleCurrentweekUpdate.bind(this);
+    this.handleSearchUpdate = this.handleSearchUpdate.bind(this);
+  }
+
+  handleNextweekUpdate(curDate){
+    this.setState({
+      startDate : curDate.clone().add(7,'day'),
+    })
+  }
+
+  handlePrevweekUpdate(curDate){
+    this.setState({
+      startDate : curDate.clone().subtract(7,'day'),
+    })
+  }
+
+  handleCurrentweekUpdate(curDate){
+    this.setState({
+      startDate : moment(moment().startOf('week').format('YYYY-MM-DD'))
+    })
   }
 
   handleMouseEnterToItem(event_id) {
-   console.log("handleMouseEnterToItem", event_id);
-   axios.get('http://52.231.64.73:3001/events/infobyid', {
-     params: {
-       id: event_id
-     }
-   })
-   .then(response => {
-     console.log('====================================');
-     console.log(response);
-     console.log('====================================');
-     if(response.data.success) {
-       const info = response.data.info;
+    // console.log("handleMouseEnterToItem", event_id);
+    axios.get('http://52.231.64.73:3001/events/infobyid', {
+      params: {
+        id: event_id
+      }
+    })
+    .then(response => {
+      // console.log('====================================');
+      // console.log(response);
+      // console.log('====================================');
+      if(response.data.success) {
+        const info = response.data.info;
 
-       let start_time = moment(info.date.substring(0, 10) + 'T' + info.start_time);
-       let end_time = moment(info.date.substring(0, 10) + 'T' + info.end_time);
+        let start_time = moment(info.date.substring(0, 10) + 'T' + info.start_time);
+        let end_time = moment(info.date.substring(0, 10) + 'T' + info.end_time);
 
-       this.setState({
-         title: info.title,
-         representation: info.creator_id,
-         startTime: start_time,
-         endTime: end_time,
-         place: info.place,
-         summary: info.summary,
-         tags: info.tags.map(
-           (tag) => ({tag: tag})
-         ),
-         markers: [{ lat: info.latitude, lng: info.longitude }]
-       })
-     }
-   });
- }
+        this.setState({
+          title: info.title,
+          representation: info.creator_id,
+          startTime: start_time,
+          endTime: end_time,
+          place: info.place,
+          summary: info.summary,
+          tags: info.tags.map(
+            (tag) => ({tag: tag})
+          ),
+          markers: [{ lat: info.latitude, lng: info.longitude }]
+        })
+      }
+    });
+  }
+
+  handleSearchUpdate(tags, keywords) {
+    this.setState({
+      filter_tags: tags,
+      filter_keywords: keywords
+    })
+  }
 
   render() {
     const {title, representation, startTime, endTime,
        place, summary, tags, markers,
-     month, year,startDate} = this.state;
+     month, year, startDate, currentDate, filter_keywords, filter_tags} = this.state;
     const popoverClick = (
       <Popover id="popover-trigger-click" title="Popover bottom">
         <strong>Holy guacamole!</strong> Check this info.
         </Popover>
     );
 
+    console.log(startDate.format('MMM'));
     const popoverHoverFocus = (
       <Popover id="popover-trigger-hover-focus" title="Popover bottom">
         <strong>Holy guacamole!</strong> Check this info.
@@ -108,15 +142,24 @@ class App extends Component {
       );
 
     const {
-      handleMouseEnterToItem
+      handleMouseEnterToItem,
+      handleNextweekUpdate,
+      handlePrevweekUpdate,
+      handleCurrentweekUpdate,
+      handleSearchUpdate
     } = this;
 
     return (
       <div>
-        <BarForm/>
+        <BarForm month={month} year={year} startDate={startDate}
+           handleNextweekUpdate={handleNextweekUpdate}
+           handlePrevweekUpdate={handlePrevweekUpdate}
+           handleCurrentweekUpdate={handleCurrentweekUpdate}
+           handleSearchUpdate={handleSearchUpdate} />
 
         <BodyForm title={title} representation={representation} startTime={startTime} endTime={endTime} startDate={startDate}
-          place={place} summary={summary} tags={tags} markers={markers} handleMouseEnterToItem={handleMouseEnterToItem}/>
+          currentDate={currentDate} place={place} summary={summary} tags={tags} markers={markers}
+           handleMouseEnterToItem={handleMouseEnterToItem} filter_tags={filter_tags} filter_keywords={filter_keywords} />
       </div>
     );
   }

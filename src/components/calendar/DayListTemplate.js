@@ -69,7 +69,7 @@ class DayListTemplate extends Component {
     for(let i=0; i<7; i++) {
       let date = startDate.clone();
       date.add('days', i);
-      axios.post('http://52.231.64.73:3002/events/itemsbydate2', {
+      axios.post('http://52.231.64.73:3001/events/itemsbydate2', {
           date: date.format("YYYY-MM-DD"),
           filter_keywords: filter_keywords,
           filter_tags: filter_tags

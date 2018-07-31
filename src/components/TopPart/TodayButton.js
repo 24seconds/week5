@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Popover, OverlayTrigger, Button} from 'react-bootstrap';
+import moment from 'moment';
 
 import './TodayButton.css';
 
@@ -8,8 +9,8 @@ class TodayButton extends Component {
     const {startDate, handleCurrentweekUpdate} = this.props;
 
     const popoverHoverFocus = (
-      <Popover id="popover-trigger-hover-focus" title="Popover bottom">
-        <strong>Holy guacamole!</strong> Check this info.
+      <Popover id="popover-trigger-hover-focus" title={moment().format('HH:mm')}>
+        <strong>{moment().format('ddd')}</strong> Check this info.
         </Popover>
       );
 
