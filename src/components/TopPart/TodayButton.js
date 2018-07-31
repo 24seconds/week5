@@ -5,6 +5,8 @@ import './TodayButton.css';
 
 class TodayButton extends Component {
   render(){
+    const {startDate, handleCurrentweekUpdate} = this.props;
+
     const popoverHoverFocus = (
       <Popover id="popover-trigger-hover-focus" title="Popover bottom">
         <strong>Holy guacamole!</strong> Check this info.
@@ -17,7 +19,9 @@ class TodayButton extends Component {
         placement="bottom"
         overlay={popoverHoverFocus}
         >
-      <Button>Today</Button>
+        <Button onClick = {() => handleCurrentweekUpdate(startDate)}>
+          Today
+        </Button>
       </OverlayTrigger>
 
     );
