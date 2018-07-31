@@ -9,15 +9,15 @@ import EventList  from './EventList'
 class OnedayItem extends Component {
 
   render (){
-    const {day, date, events, oneItemId} =this.props;
+    const {date, events, oneItemId, handleMouseEnterToItem} = this.props;
     console.log('OnedayItem');
-    console.log(day);
+    console.log(date.format("YYYY-MM-DD"));
 
 
     return(
       <div className = "OnedayItem-template">
-        <DateItem day={day} date={date} key = {oneItemId}/>
-        <EventList events={events} key = {oneItemId}/>
+        <DateItem date={date} key = {oneItemId}/>
+        <EventList events={events} key = {oneItemId} handleMouseEnterToItem = {handleMouseEnterToItem}/>
       </div>
     );
   }

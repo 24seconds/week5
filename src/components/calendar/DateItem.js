@@ -5,14 +5,14 @@ class DateItem extends Component {
 
 
   render() {
-    const {day, date} = this.props;
+    const {date} = this.props;
 
     return (<div className="DateItem-template">
       <div className="DateItem-day">
-        {day}
+        {date.format("ddd")}
       </div>
       <div className="DateItem-date">
-        {date}
+        {date.format("DD")}
       </div>
     </div>);
   }

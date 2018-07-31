@@ -1,94 +1,79 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import OnedayItem from './OnedayItem';
 import './DayListTemplate.css';
 
 class DayListTemplate extends Component {
 
   state = {
-    dayLists : [
-      {oneItemId : 0, day: 'Sun', date: '29',
-        events : [
-          {startTime : '16:00', endTime : '18:00', location : 'E11', eventTitle : 'Sample Semina'},
-          {startTime : '16:00', endTime : '17:00', location : 'W8-2', eventTitle : 'Sample Event'},
-          {startTime : '18:00', endTime : '19:00', location : 'W8-2', eventTitle : 'Sample Dinner'},
-          {startTime : '20:00', endTime : '21:00', location : 'N13', eventTitle : 'Sample Concert'},
-          {startTime : '20:00', endTime : '22:00', location : 'N3', eventTitle : 'Sample Sport'}
-        ]
-      },
-
-      {oneItemId : 1, day: 'Mon', date: '30',
-        events : [
-          {startTime : '16:00', endTime : '18:00', location : 'E11', eventTitle : 'Sample Semina'},
-          {startTime : '18:00', endTime : '19:00', location : 'W8-2', eventTitle : 'Sample Dinner'},
-          {startTime : '20:00', endTime : '21:00', location : 'N13', eventTitle : 'Sample Concert'},
-          {startTime : '20:00', endTime : '22:00', location : 'N3', eventTitle : 'Sample Sport'}
-        ]
-      },
-
-      {oneItemId : 2, day: 'Tue', date: '31',
-        events : [
-          {startTime : '16:00', endTime : '18:00', location : 'E11', eventTitle : 'Sample Semina'},
-          {startTime : '20:00', endTime : '22:00', location : 'N3', eventTitle : 'Sample Sport'}
-        ]
-      },
-
-      {oneItemId : 3, day: 'Wed', date: '1',
-        events : [
-          {startTime : '16:00', endTime : '18:00', location : 'E11', eventTitle : 'Sample Semina'},
-
-
-          {startTime : '20:00', endTime : '21:00', location : 'N13', eventTitle : 'Sample Concert'},
-          {startTime : '20:00', endTime : '22:00', location : 'N3', eventTitle : 'Sample Sport'}
-        ]
-      },
-
-      {oneItemId : 4, day: 'Thur', date: '2',
-        events : [
-          {startTime : '16:00', endTime : '18:00', location : 'E11', eventTitle : 'Sample Semina'},
-          {startTime : '16:00', endTime : '17:00', location : 'W8-2', eventTitle : 'Sample Event'},
-          {startTime : '18:00', endTime : '19:00', location : 'W8-2', eventTitle : 'Sample Dinner'},
-          {startTime : '20:00', endTime : '21:00', location : 'N13', eventTitle : 'Sample Concert'},
-          {startTime : '20:00', endTime : '22:00', location : 'N3', eventTitle : 'Sample Sport'}
-        ]
-      },
-
-      {oneItemId : 5, day: 'Fri', date: '3',
-        events : [
-          {startTime : '16:00', endTime : '18:00', location : 'E11', eventTitle : 'Sample Semina'},
-
-          {startTime : '20:00', endTime : '22:00', location : 'N3', eventTitle : 'Sample Sport'}
-        ]
-      },
-
-      {oneItemId : 6, day: 'Sat', date: '4',
-        events : [
-          {startTime : '16:00', endTime : '18:00', location : 'E11', eventTitle : 'Sample Semina'},
-          {startTime : '16:00', endTime : '17:00', location : 'W8-2', eventTitle : 'Sample Event'},
-          {startTime : '18:00', endTime : '19:00', location : 'W8-2', eventTitle : 'Sample Dinner'},
-          {startTime : '20:00', endTime : '21:00', location : 'N13', eventTitle : 'Sample Concert'},
-          {startTime : '20:00', endTime : '22:00', location : 'N3', eventTitle : 'Sample Sport'}
-        ]
-      }
-    ]
+    dayLists : []
   }
 
-  render(){
-    const {dayLists} = this.state;
+  componentDidMount(){
+    this._getEvents();
+  }
 
-    const onedayItem = dayLists.map(
-      ({oneItemId, day, date, events }) => (
-          <OnedayItem
-            day = {day}
-            date = {date}
-            events = {events}
-            key = {oneItemId}
-            />
+  _getEvents = async () => {
+    await this._callApi();
+  }
+
+  _callApi = () => {
+    const {startDate} = this.props;
+
+    for(let i=0; i<7; i++) {
+      let date = startDate.clone();
+      date.add('days', i);
+      axios.get('http://52.231.64.73:3001/events/itemsbydate', {
+        params: {
+          date: date.format("YYYY-MM-DD")
+        }
+      })
+      .then(response => {
+        console.log('====================================');
+        console.log(response);
+        console.log('====================================');
+
+        const items = response.data.items;
+        let events = [];
+
+        for(let i=0; i<items.length; i++) {
+          const item = items[i];
+          events.push({eventId: item.event_id, startTime: item.start_time, endTime: item.end_time, location: item.place, eventTitle: item.title});
+        }
+
+        this.setState({
+          dayLists: [...this.state.dayLists, {oneItemId : i, date: date, events : events}]
+        })
+      });
+    }
+  }
+
+
+  render(){
+    const {handleMouseEnterToItem} = this.props;
+    const {dayLists} = this.state;
+    dayLists.sort(function (a,b){
+      return a.date<b.date?-1:a.date>b.date?1:0;
+    });
+
+    console.log('=============await결과=============');
+    console.log(dayLists);
+    console.log('====================================');
+
+    const onedayItems = dayLists.map(
+      ({oneItemId, date, events }) => (
+        <OnedayItem
+          date = {date}
+          events = {events}
+          key = {oneItemId}
+          handleMouseEnterToItem = {handleMouseEnterToItem}
+        />
       )
     );
 
     return(
       <div className = "DayListTemplate-template">
-        {onedayItem}
+        {onedayItems}
       </div>
     );
   }
