@@ -9,7 +9,7 @@ import EventList  from './EventList'
 class OnedayItem extends Component {
 
   render (){
-    const {date, events, oneItemId, handleMouseEnterToItem} = this.props;
+    const {date, events, oneItemId, handleMouseEnterToItem, handleShow} = this.props;
     console.log('OnedayItem');
     console.log(date.format("YYYY-MM-DD"));
 
@@ -17,7 +17,7 @@ class OnedayItem extends Component {
     return(
       <div className = "OnedayItem-template">
         <DateItem date={date} key = {oneItemId}/>
-        <EventList events={events} key = {oneItemId} handleMouseEnterToItem = {handleMouseEnterToItem}/>
+        <EventList events={events} key = {oneItemId} handleMouseEnterToItem = {handleMouseEnterToItem} handleShow = {handleShow}/>
       </div>
     );
   }

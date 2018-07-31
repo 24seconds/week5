@@ -50,7 +50,7 @@ class DayListTemplate extends Component {
 
 
   render(){
-    const {handleMouseEnterToItem} = this.props;
+    const {handleMouseEnterToItem, handleShow} = this.props;
     const {dayLists} = this.state;
     dayLists.sort(function (a,b){
       return a.date<b.date?-1:a.date>b.date?1:0;
@@ -67,6 +67,7 @@ class DayListTemplate extends Component {
           events = {events}
           key = {oneItemId}
           handleMouseEnterToItem = {handleMouseEnterToItem}
+          handleShow = {handleShow}
         />
       )
     );
