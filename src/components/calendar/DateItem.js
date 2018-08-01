@@ -14,12 +14,22 @@ class DateItem extends Component {
   render() {
     const {date} = this.props;
     const checktoday = this.state.today === date.format("YYYY-MM-DD");
+    const diff = moment.duration(date.diff(moment())).asHours() < 0;
+    // console.log(diff);
+    // console.log(`DateItem-day ${checktoday && 'checktoday'}`);
+    // console.log(`DateItem-day ${checktoday && 'checktoday'}` +
+    //  (diff ? ' pastday' : ' notpastday'));
 
-    return (<div className="DateItem-template">
-      <div className={`DateItem-day ${checktoday && 'checktoday'}`}>
+     // {`DateItem-day ${diff && 'pastday'}` + (checktoday ? ' checktoday' : '')}
+
+    return (
+    <div className="DateItem-template">
+      <div className={`DateItem-day ${checktoday && 'checktoday'}` +
+       (diff & !checktoday ? ' pastday' : ' notpastday')}>
         {date.format("ddd")}
       </div>
-      <div className={`DateItem-date ${checktoday && 'checktoday'}`}>
+      <div className={`DateItem-date ${checktoday && 'checktoday'}`+
+       (diff & !checktoday ? ' pastday' : ' futureday')}>
         {date.format("DD")}
       </div>
     </div>);

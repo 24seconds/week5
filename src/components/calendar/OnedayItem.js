@@ -17,7 +17,7 @@ class OnedayItem extends Component {
     return(
       <div className = "OnedayItem-template">
         <DateItem date={date} key = {oneItemId}/>
-        <EventList events={events} key = {oneItemId} handleMouseEnterToItem = {handleMouseEnterToItem} handleShow = {handleShow}/>
+        <EventList date={date} events={events} key = {oneItemId} handleMouseEnterToItem = {handleMouseEnterToItem} handleShow = {handleShow}/>
       </div>
     );
   }

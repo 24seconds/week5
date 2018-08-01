@@ -13,9 +13,33 @@
   border-radius: 3px;
 }
 
-.EventItem-template:hover{
-  background: #8a98e6;
+.isToday{
+  background: #7986CB;
 }
+
+.isToday:hover{
+  background: #8c9bed;
+}
+
+.isPastday{
+  background: #b8bbcd;
+}
+
+.isPastday:hover{
+  background: #e4e4e4;
+}
+
+.isFutureday{
+  background: #7986CB;
+}
+
+.isFutureday:hover{
+  background: #8c9bed;
+}
+
+/* .EventItem-template:hover{
+  background: #8a98e6;
+} */
 
 
 .EvenItem-time {
