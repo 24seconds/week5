@@ -142,7 +142,10 @@ class DayListTemplate extends Component {
     return(
       <div className = "DayListTemplate-template">
         {onedayItems}
-        <FloatingButton />
+        <div className="DayListTemplate-floatingbutton">
+          <FloatingButton />
+        </div>
+
       </div>
     );
   }

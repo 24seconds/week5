@@ -24,7 +24,7 @@ class EventItem extends Component {
           {starTime.substring(0,5)} - {endTime.substring(0,5)}
         </div>
         <div className = "EvnetItem-location">
-          {location}
+            {location}
         </div>
         <div className = "EventItem-title">
           {eventTitle}

@@ -70,13 +70,13 @@ class SignInForm extends Component {
     return (
       <form className="SignIn-template" onSubmit={this.onSubmit}>
         <div className="SignIn-form">
-          <input
+          <input className="SignIn-form-email"
             value={email}
             onChange={event => this.setState(byPropKey('email', event.target.value))}
             type="text"
             placeholder="Email Address"
           />
-          <input
+        <input className="SignIn-form-password"
             value={password}
             onChange={event => this.setState(byPropKey('password', event.target.value))}
             type="password"

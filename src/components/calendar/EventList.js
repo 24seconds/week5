@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import EventItem from './EventItem';
+import './EventList.css';
 
 class EventList extends Component {
 
@@ -23,7 +24,7 @@ class EventList extends Component {
     );
 
     return(
-      <div>
+      <div className="EventList-template">
         {eventItem}
       </div>
 
