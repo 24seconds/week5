@@ -1,6 +1,6 @@
 .event-info-wrap {
     background: #f9f7e3;;
-    width: 95%;
+    width: 98%;
     height:60%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /* 그림자 */
     margin: 1%; /* 페이지 중앙 정렬 */
@@ -18,6 +18,10 @@
     font-weight: 500;
     font-family: Helvetica;
     margin-bottom: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
 .event-info-representation {
@@ -39,6 +43,9 @@
 .event-info-time {
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .event-info-small {

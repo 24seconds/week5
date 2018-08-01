@@ -1,9 +1,11 @@
 .DayListTemplate-template {
   display: flex;
   flex-direction: row;
-  background: rgb(255, 9, 9);
-
   width: 70%;
-  height: 80vh;
+  height: 90vh;
+  /* background: rgb(255, 9, 9); */
+}
+
+.DayListTemplate-floatingbutton{
 
 }
