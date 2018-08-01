@@ -76,10 +76,11 @@ class DayListTemplate extends Component {
     for(let i=0; i<7; i++) {
       let date = startDate.clone();
       date.add('days', i);
-      axios.post('http://52.231.64.73:3001/events/itemsbydate2', {
+      axios.post('http://52.231.64.73:3001/events/itemsbydate3', {
           date: date.format("YYYY-MM-DD"),
           filter_keywords: filter_keywords,
-          filter_tags: filter_tags
+          filter_tags: filter_tags,
+          user_id: "user1"
       })
       .then(response => {
         // console.log('====================================');
@@ -91,7 +92,7 @@ class DayListTemplate extends Component {
 
         for(let i=0; i<items.length; i++) {
           const item = items[i];
-          events.push({eventId: item.event_id, startTime: item.start_time, endTime: item.end_time, location: item.place, eventTitle: item.title});
+          events.push({eventId: item.event_id, startTime: item.start_time, endTime: item.end_time, location: item.place, eventTitle: item.title, interest: item.interest});
         }
 
         this.setState({

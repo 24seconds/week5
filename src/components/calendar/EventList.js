@@ -8,7 +8,7 @@ class EventList extends Component {
     const {events, handleMouseEnterToItem, handleShow} = this.props;
 
     const eventItem = events.map(
-      ({eventId, startTime, endTime, location, eventTitle}) => (
+      ({eventId, startTime, endTime, location, eventTitle, interest}) => (
         <EventItem
           eventId = {eventId}
           starTime = {startTime}
@@ -16,7 +16,8 @@ class EventList extends Component {
           location = {location}
           eventTitle = {eventTitle}
           handleMouseEnterToItem = {handleMouseEnterToItem}
-          handleShow = {handleShow} />
+          handleShow = {handleShow}
+          interest = {interest} />
       )
     );
 
