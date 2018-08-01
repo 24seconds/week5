@@ -41,10 +41,15 @@ class DetailModal extends Component {
 
                     <h4>이벤트 설명</h4>
                     <p>
-                        {summary}
+                        {summary.split('\r').map( line => {
+                            return (<span>{line}<br/></span>)
+                        })}
                     </p>
+                    <hr />
                     <p>
-                        {detail}
+                        {detail.split('\r').map( line => {
+                            return (<span>{line}<br/></span>)
+                        })}
                     </p>
                 </Modal.Body>
                 <Modal.Footer>

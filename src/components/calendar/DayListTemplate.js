@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import OnedayItem from './OnedayItem';
 import './DayListTemplate.css';
+import FloatingButton from './FloatingButton'
 
 class DayListTemplate extends Component {
 
-  state = {
-
-    dayLists : []
+  constructor(props) {
+    super(props);
+    this.state = {
+      dayLists : [],
+      show: false,
+    }
+  
+    this.handleClose = this.handleClose.bind(this);
   }
+  
 
   shouldComponentUpdate(nextProps, nextState) {
     // console.log('shouldComponentUpdate');
@@ -94,6 +101,10 @@ class DayListTemplate extends Component {
     }
   }
 
+  handleClose() {
+    this.setState({ show: false });
+  }
+
   render() {
     const {handleMouseEnterToItem, handleShow} = this.props;
     const {dayLists} = this.state;
@@ -120,6 +131,7 @@ class DayListTemplate extends Component {
     return(
       <div className = "DayListTemplate-template">
         {onedayItems}
+        <FloatingButton />
       </div>
     );
   }
