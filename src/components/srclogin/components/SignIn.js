@@ -8,6 +8,8 @@ import * as routes from '../constants/routes';
 
 import { Link } from 'react-router-dom';
 
+import './SignIn.css';
+
 
 const SignInPage = ({ history }) =>
   <div>
@@ -66,19 +68,22 @@ class SignInForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={password}
-          onChange={event => this.setState(byPropKey('password', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
+      <form className="SignIn-template" onSubmit={this.onSubmit}>
+        <div className="SignIn-form">
+          <input
+            value={email}
+            onChange={event => this.setState(byPropKey('email', event.target.value))}
+            type="text"
+            placeholder="Email Address"
+          />
+          <input
+            value={password}
+            onChange={event => this.setState(byPropKey('password', event.target.value))}
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+
         <button disabled={isInvalid} type="submit">
           Sign In
         </button>

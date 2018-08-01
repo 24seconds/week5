@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './AccountBar.css';
 
+import Login from '../srclogin/components/App'
+
 class AccountBar extends Component{
 
   render(){
@@ -8,7 +10,7 @@ class AccountBar extends Component{
 
     return(
       <div className="AccountBar-template">
-        asdfasdsadfasdfasas
+        <Login/>
       </div>
     );
   }

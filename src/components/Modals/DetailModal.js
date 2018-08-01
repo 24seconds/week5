@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Popover, OverlayTrigger, Button, Modal, Tooltip} from 'react-bootstrap';
 import moment from 'moment';
 import Tags from '../Tag/Tags'
+import './DetailModal.css';
 
 class DetailModal extends Component {
     constructor(props) {
@@ -20,8 +21,9 @@ class DetailModal extends Component {
 
         return (
             <Modal show={this.props.show} onHide={this.props.handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header className='DetailModal-Header' closeButton>
                     <Modal.Title>{title}</Modal.Title>
+                    <div>asdfasdfasdfasdf</div>
                 </Modal.Header>
                 <Modal.Body>
                     <h4>일시</h4>
@@ -57,7 +59,7 @@ class DetailModal extends Component {
                 </Modal.Footer>
             </Modal>
         );
-        
+
     }
 }
 

@@ -28,7 +28,7 @@ class HomePage extends Component {
 
     return (
       <div>
-      <li><SignOutButton /></li>
+      <div><SignOutButton /></div>
 
         { !!users && <UserList users={users} /> }
       </div>

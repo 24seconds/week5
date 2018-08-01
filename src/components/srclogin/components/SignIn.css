@@ -1,0 +1,10 @@
+.SignIn-template{
+  display: flex;
+  flex-direction: row;
+   
+}
+
+.SignIn-form{
+  display: flex;
+  flex-direction: column;
+}
