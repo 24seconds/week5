@@ -25,7 +25,9 @@ class EventInfo extends Component {
                 </div>
 
                 <br/>
-                <div className="event-info-summary">{this.props.summary}</div>
+                <div className="event-info-summary">{this.props.summary.split('\r').map( line => {
+                            return (<span>{line}<br/></span>)
+                        })}</div>
                 <div className = "event-info-representation">
                   <div>
                         Written By : {this.props.representation}&nbsp;
