@@ -4,6 +4,8 @@ import OnedayItem from './OnedayItem';
 import './DayListTemplate.css';
 import FloatingButton from './FloatingButton'
 import { auth } from '../srclogin/firebase/firebase';
+import DetailModal from '../Modals/DetailModal';
+
 
 class DayListTemplate extends Component {
 
@@ -12,9 +14,11 @@ class DayListTemplate extends Component {
     this.state = {
       dayLists : [],
       show: false,
+      detail: ""
     }
 
     this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this)
   }
 
 
@@ -116,8 +120,24 @@ class DayListTemplate extends Component {
     this.setState({ show: false });
   }
 
+  handleShow(event_id) {
+    axios.get('http://52.231.64.73:3001/events/detailbyid', {
+        params: {
+          id: event_id
+        }
+      })
+      .then(response => {
+        if(response.data.success) {
+          this.setState({
+            detail: response.data.detail,
+            show: true
+          });
+        }
+      });
+  }
+
   render() {
-    const {handleMouseEnterToItem, handleShow} = this.props;
+    const {handleMouseEnterToItem, title, representation, startTime, endTime, place, summary, tags} = this.props;
     const {dayLists} = this.state;
     dayLists.sort(function (a,b){
       return a.date<b.date?-1:a.date>b.date?1:0;
@@ -134,7 +154,7 @@ class DayListTemplate extends Component {
           events = {events}
           key = {oneItemId}
           handleMouseEnterToItem = {handleMouseEnterToItem}
-          handleShow = {handleShow}
+          handleShow = {this.handleShow}
         />
       )
     );
@@ -145,7 +165,8 @@ class DayListTemplate extends Component {
         <div className="DayListTemplate-floatingbutton">
           <FloatingButton />
         </div>
-
+        <DetailModal show={this.state.show} handleClose={this.handleClose} title={title} representation={representation} startTime={startTime} endTime={endTime}
+          place={place} summary={summary} tags={tags} detail={this.state.detail}/>
       </div>
     );
   }
