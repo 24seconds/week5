@@ -30,6 +30,8 @@ class AddModal extends Component {
         this.handleChangeStartTime = this.handleChangeStartTime.bind(this);
         this.handleChangeEndTime = this.handleChangeEndTime.bind(this);
         this.handleChangePlace = this.handleChangePlace.bind(this);
+        this.handleChangeLat = this.handleChangeLat.bind(this);
+        this.handleChangeLng = this.handleChangeLng.bind(this);
         this.handleChangeSummary = this.handleChangeSummary.bind(this);
         this.handleChangeDetail = this. handleChangeDetail.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
@@ -62,6 +64,18 @@ class AddModal extends Component {
     handleChangePlace(event) {
         this.setState({
             place: event.target.value
+        })
+    }
+
+    handleChangeLat(event) {
+        this.setState({
+            latitude: event.target.value
+        })
+    }
+
+    handleChangeLng(event) {
+        this.setState({
+            longitude: event.target.value
         })
     }
 
@@ -156,6 +170,7 @@ class AddModal extends Component {
                     </div>
                     <div>
                         장소 : <input onChange={this.handleChangePlace}/>
+                        <br/>위도 : <input onChange={this.handleChangeLat}/> 경도 : <input onChange={this.handleChangeLng}/>
                     </div>
                     <div>
                         요약<br/><textarea onChange={this.handleChangeSummary}/>
