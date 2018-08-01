@@ -1,10 +1,21 @@
 .SignIn-template{
   display: flex;
   flex-direction: row;
-   
+  padding-top: 3rem;
 }
 
 .SignIn-form{
   display: flex;
   flex-direction: column;
+}
+
+.SignIn-button{
+    display: inline-block;
+    opacity: .7;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    font-family: Helvetica;
+    cursor: pointer;
+    background-color: #ddd;
 }

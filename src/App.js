@@ -154,7 +154,7 @@ class App extends Component {
     } = this;
 
     return (
-      <div className="App-template">        
+      <div className="App-template">
 
         <TopbarForm startDate={startDate}
            handleNextweekUpdate={handleNextweekUpdate}

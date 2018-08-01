@@ -1,4 +1,31 @@
-.DetailModal-Header{  
+.DetailModal-Header{
+
 
   background: #e81414;
+}
+
+.DetailModal-star{
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background: inherit;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.DetailModal-star:hover {
+  background: #de5757;
+}
+
+.DetailModal-tempalte{
+
+}
+
+.DetailModal-star-template{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.DetailModal-title{
+
 }

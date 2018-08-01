@@ -9,13 +9,17 @@ class NextButton extends Component{
 
     return(
       <div className='NextButton-template'>
-        <Button bsStyle="link" onClick = {() => handleNextweekUpdate(startDate)}>
-          <Image src={require('../../images/next2.png')} rounded />
-        </Button>
-
+        <div className="NextButton-text" onClick = {() => handleNextweekUpdate(startDate)}>
+          &gt;
+        </div>
       </div>
     );
   }
 }
 
 export default NextButton;
+
+
+// <Button bsStyle="link" onClick = {() => handleNextweekUpdate(startDate)}>
+//   <Image src={require('../../images/next2.png')} rounded />
+// </Button>

@@ -15,11 +15,9 @@ class PrevButton extends Component {
 
     return(
       <div className="PrevButton-template">
-
-          <Image className="PrevButton-image"
-            src={require('../../images/prev2.png')} responsive
-            onClick = {() => handlePrevweekUpdate(startDate)} />
-
+          <div className="PrevButton-text" onClick = {() => handlePrevweekUpdate(startDate)}>
+            &lt;
+          </div>
       </div>
 
     );
@@ -30,3 +28,8 @@ class PrevButton extends Component {
 
 
 export default PrevButton;
+
+
+// <Image className="PrevButton-image"
+//   src={require('../../images/prev2.png')} responsive
+//   onClick = {() => handlePrevweekUpdate(startDate)} />

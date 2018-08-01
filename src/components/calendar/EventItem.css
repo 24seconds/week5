@@ -13,6 +13,10 @@
   border-radius: 3px;
 }
 
+.EventItem-template:hover{
+  background: #8a98e6;
+}
+
 
 .EvenItem-time {
   padding : 0rem;
@@ -36,6 +40,7 @@
   text-overflow: ellipsis;
   background: rgba(#ffffff, 0);
   color:#fff;
+  white-space: nowrap;
 }
 
 .EventItem-title{

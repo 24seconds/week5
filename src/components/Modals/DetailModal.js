@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import {Popover, OverlayTrigger, Button, Modal, Tooltip} from 'react-bootstrap';
+import {Image, Popover, OverlayTrigger, Button, Modal, Tooltip} from 'react-bootstrap';
 import moment from 'moment';
 import Tags from '../Tag/Tags'
 import './DetailModal.css';
+
+import Icon from '../../images/star_blank.png'
+import Icon2 from '../../images/star_yellow.png'
 
 class DetailModal extends Component {
     constructor(props) {
@@ -21,10 +24,20 @@ class DetailModal extends Component {
 
         return (
             <Modal show={this.props.show} onHide={this.props.handleClose}>
-                <Modal.Header className='DetailModal-Header' closeButton>
-                    <Modal.Title>{title}</Modal.Title>
-                    <div>asdfasdfasdfasdf</div>
-                </Modal.Header>
+              <Modal.Header className='DetailModal-Header' closeButton>
+                  <Modal.Title>{title}</Modal.Title>
+                  <div className='DetailModal-star-template'>
+                    <button className='DetailModal-star'>
+                      <Image
+                        src={require('../../images/star_yellow.png')} responsive
+                        onClick = {() => console.log('asdfa')} />
+                    </button>
+                  </div>
+
+
+              </Modal.Header>
+
+
                 <Modal.Body>
                     <h4>일시</h4>
                     <p>

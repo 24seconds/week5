@@ -5,7 +5,7 @@
   align-items: flex-start;
   background: rgb(255, 255, 255);
   width: 95%;
-  height:8%;
+  height:auto;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   margin: 0 auto;
   margin-bottom: 0.1rem;
@@ -19,23 +19,28 @@
   text-align: left;
   font-weight: 400;
   font-family:Helvetica;
-  line-height: 26px;
+
   background: rgba(#ffffff, 0);
   color:#212121;
   margin-left: 0.8rem;
-  margin-bottom: 0.4rem;
-  height: 15px;
+  margin-top: 0.5rem;
+
+  height: inherit;
 }
 
 .DateItem-date {
-
+  height: inherit;
   padding : 0rem;
   font-size: 2.5rem;
   font-family: Helvetica;
   text-align: center;
   font-weight: 400;
-  line-height: 40px;
+
   background: rgba(#ffffff, 0);
   color:#212121;
   margin-left: 1.0rem;
+}
+
+.checktoday {
+  color: #4285f4;
 }
