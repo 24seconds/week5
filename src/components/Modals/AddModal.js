@@ -15,8 +15,8 @@ class AddModal extends Component {
         this.state = {
             title: "",
             startDate: moment(),
-            startTime: moment().set('minute', 0).add(1, 'hour'),
-            endTime: moment().set('minute', 0).add(2, 'hour'),
+            startTime: moment().set('minute', 0).set('second', 0).add(1, 'hour'),
+            endTime: moment().set('minute', 0).set('second', 0).add(2, 'hour'),
             place: null,
             latitude: null,
             longitude: null,
