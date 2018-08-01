@@ -14,10 +14,10 @@ class EventItem extends Component {
     return(
       <div className = "EventItem-template" onMouseOver = {() => handleMouseEnterToItem(eventId)} onClick = {() => handleShow(eventId)}>
         <div className = "EvenItem-time">
-          {starTime} - {endTime}
+          {starTime.substring(0,5)} - {endTime.substring(0,5)}
         </div>
         <div className = "EvnetItem-location">
-          {location}          
+          {location}
         </div>
         <div className = "EventItem-title">
           {eventTitle}
