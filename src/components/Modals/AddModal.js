@@ -127,56 +127,61 @@ class AddModal extends Component {
         // const {title, representation, startTime, endTime, place, summary, tags, detail} = this.props;
 
         return (
-            
+
             <Modal show={this.props.show} onHide={this.props.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>이벤트 등록</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        이벤트 제목 : <input onChange={this.handleChangeTitle}/>
+                        이벤트 제목 : <input className='AddModal-eventtitle' onChange={this.handleChangeTitle}/>
+                    </div>
+                    <div className="AddModal-datepicker-template">
+                      <div>
+                        시간 : &nbsp;
+                      </div>
+                      <div className="AddModal-totaltime-template">
+                        <div>
+                            <DatePicker className="AddModal-datetime"
+                                // className='date-picker'
+
+                                dateFormat="YYYY년 MM월 DD일"
+                                selected={this.state.startDate}
+                                onChange={this.handleChangeDate}
+                                todayButton={"오늘"}
+                            />
+                        </div>
+                        <div className="AddModal-time-template">
+                            <DatePicker className="AddModal-starttime"
+                                selected={this.state.startTime}
+                                onChange={this.handleChangeStartTime}
+                                showTimeSelect
+                                showTimeSelectOnly
+                                timeIntervals={5}
+                                dateFormat="LT"
+                                timeCaption="Start Time"
+                            />
+                          <DatePicker className="AddModal-endtime"
+                                selected={this.state.endTime}
+                                onChange={this.handleChangeEndTime}
+                                showTimeSelect
+                                showTimeSelectOnly
+                                timeIntervals={5}
+                                dateFormat="LT"
+                                timeCaption="End Time"
+                            />
+                        </div>
+                      </div>
+                    </div>
+                    <div >
+                        장소 : <input className='AddModal-location-template' onChange={this.handleChangePlace}/>
+                      <br/>위도 : <input className='AddModal-location' onChange={this.handleChangeLat}/> 경도 : <input className='AddModal-location' onChange={this.handleChangeLng}/>
                     </div>
                     <div>
-                        <DatePicker
-                            // className='date-picker'
-                            
-                            dateFormat="YYYY년 MM월 DD일"
-                            selected={this.state.startDate}
-                            onChange={this.handleChangeDate}
-                            todayButton={"오늘"}
-                        />
+                        요약<br/><textarea className='AddModal-info' onChange={this.handleChangeSummary}/>
                     </div>
                     <div>
-                        <DatePicker
-                            
-                            selected={this.state.startTime}
-                            onChange={this.handleChangeStartTime}
-                            showTimeSelect
-                            showTimeSelectOnly
-                            timeIntervals={5}
-                            dateFormat="LT"
-                            timeCaption="Start Time"
-                        />
-                        <DatePicker
-                            
-                            selected={this.state.endTime}
-                            onChange={this.handleChangeEndTime}
-                            showTimeSelect
-                            showTimeSelectOnly
-                            timeIntervals={5}
-                            dateFormat="LT"
-                            timeCaption="End Time"
-                        />
-                    </div>
-                    <div>
-                        장소 : <input onChange={this.handleChangePlace}/>
-                        <br/>위도 : <input onChange={this.handleChangeLat}/> 경도 : <input onChange={this.handleChangeLng}/>
-                    </div>
-                    <div>
-                        요약<br/><textarea onChange={this.handleChangeSummary}/>
-                    </div>
-                    <div>
-                        자세한 정보<br/><textarea onChange={this.handleChangeDetail}/>
+                        자세한 정보<br/><textarea className='AddModal-info' onChange={this.handleChangeDetail}/>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
@@ -185,7 +190,7 @@ class AddModal extends Component {
                 </Modal.Footer>
             </Modal>
         );
-        
+
     }
 }
 

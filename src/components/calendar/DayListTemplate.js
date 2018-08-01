@@ -12,10 +12,10 @@ class DayListTemplate extends Component {
       dayLists : [],
       show: false,
     }
-  
+
     this.handleClose = this.handleClose.bind(this);
   }
-  
+
 
   shouldComponentUpdate(nextProps, nextState) {
     // console.log('shouldComponentUpdate');
@@ -132,7 +132,10 @@ class DayListTemplate extends Component {
     return(
       <div className = "DayListTemplate-template">
         {onedayItems}
-        <FloatingButton />
+        <div className="DayListTemplate-floatingbutton">
+          <FloatingButton />
+        </div>
+
       </div>
     );
   }

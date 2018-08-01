@@ -26,7 +26,7 @@ class FloatingButton extends Component {
         console.log('====================================');
         this.setState({ show: true });
     }
-  
+
     render() {
         var effect = 'slidein-spring',
             pos = 'br',
@@ -36,7 +36,7 @@ class FloatingButton extends Component {
             <div>
                 <AddModal show={this.state.show} handleClose={this.handleClose} />
                 <Menu effect={effect} method={method} position={pos}>
-                    <MainButton iconResting="ion-plus-round" iconActive="ion-close-round" />
+                    <MainButton iconResting="ion-plus-round" iconActive="ion-close-round" />                    
                     <ChildButton
                         //onClick={function(e){ console.log(e); e.preventDefault(); }}
                         icon="ion-social-github"
@@ -51,6 +51,5 @@ class FloatingButton extends Component {
         );
     }
 }
-  
+
 export default FloatingButton;
-  
