@@ -9,7 +9,7 @@ class EventItem extends Component {
 
 
   render() {
-    const {eventId, starTime, endTime, location, eventTitle, handleMouseEnterToItem, handleShow} = this.props;
+    const {eventId, starTime, endTime, location, eventTitle, handleMouseEnterToItem, handleShow, interest} = this.props;
 
     return(
       <div className = "EventItem-template" onMouseOver = {() => handleMouseEnterToItem(eventId)} onClick = {() => handleShow(eventId)}>
@@ -22,6 +22,7 @@ class EventItem extends Component {
         <div className = "EventItem-title">
           {eventTitle}
         </div>
+        <div>{interest? "관심!" : ""}</div>
       </div>
     );
   }

@@ -4,10 +4,10 @@ import './SearchBar.css';
 
 class SearchBar extends Component {
 
-  // state = {
-  //   filter_keywords: [],
-  //   filter_tags: []
-  // }
+  state = {
+    filter_keywords: [],
+    filter_tags: []
+  }
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
