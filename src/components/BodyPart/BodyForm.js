@@ -5,7 +5,7 @@ import './BodyForm.css';
 
 import DayListTemplate from '../calendar/DayListTemplate';
 import InfoForm from '../BodyPart/InfoForm';
-import DetailModal from '../DetailModal/DetailModal';
+import DetailModal from '../Modals/DetailModal';
 
 class BodyForm extends Component {
   constructor(props) {
@@ -13,12 +13,13 @@ class BodyForm extends Component {
 
     this.state = {
       detail: "",
-      show: false,
+      
     }
 
     // this.updateEventInfo = this.updateEventInfo.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    
   }
 
   handleClose() {
