@@ -8,9 +8,9 @@ class NextButton extends Component{
     const {startDate, handleNextweekUpdate} = this.props;
 
     return(
-      <div>
+      <div className='NextButton-template'>
         <Button bsStyle="link" onClick = {() => handleNextweekUpdate(startDate)}>
-          <Image src={require('../../images/next.png')} responsive />
+          <Image src={require('../../images/next2.png')} rounded />
         </Button>
 
       </div>

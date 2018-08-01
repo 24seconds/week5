@@ -1,0 +1,11 @@
+.ButtonDropDown-template{
+  display: inline-block;
+  width: 5%;
+  cursor: pointer;
+  font-weight: 500;
+  
+  background: #bdbdbd;
+  text-align: center;
+  font-family: Helvetica;
+
+}

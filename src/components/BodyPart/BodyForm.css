@@ -1,5 +1,10 @@
 .BodyForm-template  {
   display: flex;
   flex-direction:row;
-  background: rgb(27, 194, 23);
+  justify-content:center;
+
+  background: rgb(13, 0, 255);
+  margin-top: 1%;
+  width: 100%;
+  height: auto;
 }

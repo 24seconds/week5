@@ -15,20 +15,26 @@ class EventInfo extends Component {
                     {this.props.title}
                 </div>
 
+                <div className="event-info-small">
+                  <div className = "event-info-time">
+                      <div >일시 : &nbsp;</div>
+                      <div>{this.props.startTime.format("M월 DD일 HH:mm")}</div>
+                      <div className="end-date">-{moment(this.props.endTime).format("HH:mm")}</div>
+                  </div>
+                  <div>장소 : &nbsp;{this.props.place} </div>
+                </div>
+
+                <br/>
+                <div className="event-info-summary">{this.props.summary}</div>
                 <div className = "event-info-representation">
-                    {this.props.representation}
+                  <div>
+                        Written By : {this.props.representation}&nbsp;
+                  </div>
+                  <div>
+                    <Tags tags={this.props.tags}/>
+                  </div>
+
                 </div>
-
-                <div>
-                    <div className = "event-info-small">일시:</div>
-                    <div>{this.props.startTime.format("M월 DD일 HH시 mm분")}</div>
-                    <div className="end-date">~{moment(this.props.endTime).format("M월 DD일 HH시 mm분")}</div>
-                </div>
-                <div>장소: {this.props.place}</div>
-
-                <Tags tags={this.props.tags}/>
-
-                <div>{this.props.summary}</div>
             </main>
         );
     }

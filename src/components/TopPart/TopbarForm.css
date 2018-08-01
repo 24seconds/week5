@@ -1,0 +1,7 @@
+.TopbarForm-template{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;  
+
+  background: rgb(1, 255, 255);
+}

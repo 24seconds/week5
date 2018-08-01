@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Tag from './Tag'
-import './Tag.css'
+import './Tags.css'
 
 class Tags extends Component {
     constructor(props) {
@@ -16,12 +16,11 @@ class Tags extends Component {
         );
 
         return (
-            <ul >
-                <li>{tagList}</li>
-            </ul>
+            <div className="Tags-template">
+              {tagList}
+            </div>
         );
     }
 }
 
 export default Tags;
-

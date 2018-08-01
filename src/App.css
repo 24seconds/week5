@@ -22,6 +22,17 @@
   font-size: large;
 }
 
+.App-template{
+  background:rgba(0, 0, 0, 0.61);
+  width: 100%;
+  height: auto;
+}
+
+.Login-template{
+  width: 30%;
+  background: #ffdede;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

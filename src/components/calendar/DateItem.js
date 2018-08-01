@@ -3,6 +3,9 @@ import './DateItem.css';
 
 class DateItem extends Component {
 
+// If today, text Color #4285f4
+// For past days int, text color #9e9e9e
+// For past days string, text color #75757
 
   render() {
     const {date} = this.props;
