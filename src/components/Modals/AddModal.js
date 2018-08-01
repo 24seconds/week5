@@ -93,9 +93,11 @@ class AddModal extends Component {
             tags: tags
         })
         .then(response => {
-            console.log('=============add 결과===============');
-            console.log(response);
-            console.log('====================================');
+            if(response.data.success) {
+                this.props.handleClose();
+            } else {
+                alert("실패");
+            }
         });
     }
 
