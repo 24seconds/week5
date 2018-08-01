@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Tag.css';
+
 class Tag extends Component {
     constructor(props) {
         super(props);
@@ -7,8 +9,8 @@ class Tag extends Component {
 
     render() {
         return (
-            <div>
-                {this.props.tag}
+            <div className="Tag-template">
+                #{this.props.tag}&nbsp;&nbsp;
             </div>
         );
     }

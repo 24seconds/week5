@@ -8,22 +8,34 @@ class TodayButton extends Component {
   render(){
     const {startDate, handleCurrentweekUpdate} = this.props;
 
+    const str = 'Time : '+moment().format('HH:mm')
+
     const popoverHoverFocus = (
-      <Popover id="popover-trigger-hover-focus" title={moment().format('HH:mm')}>
-        <strong>{moment().format('ddd')}</strong> Check this info.
+      <Popover id="popover-trigger-hover-focus" title={str}>
+        <strong>{moment().format('ddd')}</strong> {moment().format('MMMM')} {moment().format('Do')}
         </Popover>
       );
 
     return(
-      <OverlayTrigger
-        trigger={['hover', 'focus']}
-        placement="bottom"
-        overlay={popoverHoverFocus}
-        >
-        <Button onClick = {() => handleCurrentweekUpdate(startDate)}>
-          Today
-        </Button>
-      </OverlayTrigger>
+
+      <div className="TodayButton-template">
+
+
+        <OverlayTrigger
+          trigger={['hover', 'focus']}
+          placement="bottom"
+          overlay={popoverHoverFocus}
+          >
+          <span className="TodayButton-button"
+            onClick = {() => handleCurrentweekUpdate(startDate)}>
+            TODAY
+          </span>
+        </OverlayTrigger>
+
+
+    </div>
+
+
 
     );
   }

@@ -41,15 +41,15 @@ class EventInfo extends Component {
 // }}
 
         return (
-            <main className = "map-wrap">
+            <main className = "Map-template">
               <NaverMap
                   clientId = '5egEYGrThQZ6HQ_AR4H5'
-                  style = {{width:'100%', height:'360px'}}
-                  initialPosition={{lat:36.369160, lng:127.362735}}
+                  style = {{width:'100%', height:'100%'}}
+                  initialPosition={{lat:36.372396, lng:127.360379}}
                    initialZoom={10}
-                   initialBounds={{   // When you provide initialBounds, it will ignores initialPosition and initialZoom
-                       south:36.3634766, west:127.3549002,
-                       north:36.3764522, east:127.3704088}}
+                   // initialBounds={{   // When you provide initialBounds, it will ignores initialPosition and initialZoom
+                   //     south:36.363822, west:127.354244,
+                   //     north:36.3764522, east:127.3704088}}
                   >
                   {/* // onInit={(map, naver) => {...}}  // map: naver map object, naver: window.naver object
                   // onBoundChange={(bounds) => {...}}  // bounds: naver.maps.LatLngBounds

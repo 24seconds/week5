@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 import axios from 'axios';
 import moment from 'moment';
 
@@ -17,11 +18,14 @@ import TodayButton from './components/TopPart/TodayButton'
 import MonthText from './components/TopPart/MonthText'
 import ButtonDropDown from './components/TopPart/ButtonDropDown'
 import BarForm from './components/TopPart/BarForm'
+import TopbarForm from './components/TopPart/TopbarForm'
 
 import EventInfo from './components/EventInfo/EventInfo'
 import Map from './components/Map/Map'
 
 import BodyForm from './components/BodyPart/BodyForm'
+
+import Login from './components/srclogin/components/App'
 
 
 class App extends Component {
@@ -150,8 +154,12 @@ class App extends Component {
     } = this;
 
     return (
-      <div>
-        <BarForm month={month} year={year} startDate={startDate}
+      <div className="App-template">
+        <div  className="Login-template">
+          <Login/>
+        </div>
+
+        <TopbarForm startDate={startDate}
            handleNextweekUpdate={handleNextweekUpdate}
            handlePrevweekUpdate={handlePrevweekUpdate}
            handleCurrentweekUpdate={handleCurrentweekUpdate}

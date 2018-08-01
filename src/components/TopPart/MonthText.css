@@ -1,6 +1,18 @@
 .MonthText-template{
   display: flex;
   flex-direction: row;
-  
 
+}
+
+.MonthText-month{
+  font-size: 20px;
+  font-weight: 400;
+  opacity: .54;
+  white-space: nowrap;
+  font-family: Helvetica; 
+  margin-right: 1rem;
+}
+
+.MonthText-year{
+  font-size: 20px;
 }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Button} from 'react-bootstrap'
-
 import './SearchBar.css';
 
 class SearchBar extends Component {
@@ -50,11 +49,16 @@ class SearchBar extends Component {
   render() {
     return(
       <div className="SearchBar-template">
-        <input onChange={this.handleChange}/>
-        <Button className="SearchBar-create-button" onClick={this.handleButton}>
-          검색
-        </Button>
+        <div className="SearchBar-box">
+          <input onChange={this.handleChange}/>
+            <button className="SearchBar-create-button" onClick={this.handleButton}>
+              검색
+            </button>
+        </div>
+
+
       </div>
+
 
     );
   }
