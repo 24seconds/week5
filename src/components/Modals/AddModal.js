@@ -4,6 +4,7 @@ import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
+import { auth } from '../srclogin/firebase/firebase';
 
 import Tags from '../Tag/Tags'
 import './AddModal.css';
@@ -92,9 +93,11 @@ class AddModal extends Component {
     }
 
     handleAdd() {
+        var user = auth.currentUser.email;
+
         const {title, startDate, startTime, endTime, place, latitude, longitude, summary, detail, tags} = this.state;
         axios.post('http://52.231.64.73:3001/events/add', {
-            creator_id: "master",
+            creator_id: user,
             title: title,
             date: startDate.format("YYYY-MM-DD"),
             start_time: startTime.format("hh:mm:ss"),
@@ -127,7 +130,7 @@ class AddModal extends Component {
         // const {title, representation, startTime, endTime, place, summary, tags, detail} = this.props;
 
         return (
-            
+
             <Modal show={this.props.show} onHide={this.props.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>이벤트 등록</Modal.Title>
@@ -139,7 +142,7 @@ class AddModal extends Component {
                     <div>
                         <DatePicker
                             // className='date-picker'
-                            
+
                             dateFormat="YYYY년 MM월 DD일"
                             selected={this.state.startDate}
                             onChange={this.handleChangeDate}
@@ -148,7 +151,7 @@ class AddModal extends Component {
                     </div>
                     <div>
                         <DatePicker
-                            
+
                             selected={this.state.startTime}
                             onChange={this.handleChangeStartTime}
                             showTimeSelect
@@ -158,7 +161,7 @@ class AddModal extends Component {
                             timeCaption="Start Time"
                         />
                         <DatePicker
-                            
+
                             selected={this.state.endTime}
                             onChange={this.handleChangeEndTime}
                             showTimeSelect
@@ -185,7 +188,7 @@ class AddModal extends Component {
                 </Modal.Footer>
             </Modal>
         );
-        
+
     }
 }
 

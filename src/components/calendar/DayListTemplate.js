@@ -3,6 +3,7 @@ import axios from 'axios';
 import OnedayItem from './OnedayItem';
 import './DayListTemplate.css';
 import FloatingButton from './FloatingButton'
+import { auth } from '../srclogin/firebase/firebase';
 
 class DayListTemplate extends Component {
 
@@ -12,10 +13,10 @@ class DayListTemplate extends Component {
       dayLists : [],
       show: false,
     }
-  
+
     this.handleClose = this.handleClose.bind(this);
   }
-  
+
 
   shouldComponentUpdate(nextProps, nextState) {
     // console.log('shouldComponentUpdate');
@@ -76,11 +77,20 @@ class DayListTemplate extends Component {
     for(let i=0; i<7; i++) {
       let date = startDate.clone();
       date.add('days', i);
+
+      var user = auth.currentUser;
+      var email;
+      if (user != null) {
+        email=user.email;
+      } else{
+        email='user1';
+      }
+
       axios.post('http://52.231.64.73:3001/events/itemsbydate3', {
           date: date.format("YYYY-MM-DD"),
           filter_keywords: filter_keywords,
           filter_tags: filter_tags,
-          user_id: "user1"
+          user_id: email
       })
       .then(response => {
         // console.log('====================================');
