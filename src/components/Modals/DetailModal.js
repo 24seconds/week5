@@ -29,7 +29,7 @@ class DetailModal extends Component {
                   <div className='DetailModal-star-template'>
                     <button className='DetailModal-star'>
                       <Image
-                        src={require('../../images/star_yellow.png')} responsive
+                        src={require('../../images/'+({interest} ? 'star_yellow.png' : 'star_blank.png'))} responsive
                         onClick = {() => handleUpdateInterest(interest, event_id)} />
                     </button>
                   </div>

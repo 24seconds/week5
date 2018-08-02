@@ -17,12 +17,18 @@ class DayListTemplate extends Component {
       detail: "",
       interest : false,
       event_id: 0,
+      user_id:""
     }
 
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleUpdateInterest = this.handleUpdateInterest.bind(this);
+
   }
+
+
+
+
 
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -66,11 +72,15 @@ class DayListTemplate extends Component {
     return true;
   }
 
+
+
   componentDidMount(){
     // console.log('DayListTemplate');
     // console.log(this.props.startDate);
     // console.log(this.props.startDate._i);
     // console.log(this.props.currentDate);
+
+
     this._getEvents(this.props.startDate, this.props.filter_tags, this.props.filter_keywords);
   }
 
@@ -90,7 +100,7 @@ class DayListTemplate extends Component {
           date: date.format("YYYY-MM-DD"),
           filter_keywords: filter_keywords,
           filter_tags: filter_tags,
-          user_id: 'user',
+          user_id: '22@gmail.com',
       })
       .then(response => {
         // console.log('====================================');
@@ -145,6 +155,12 @@ class DayListTemplate extends Component {
         .then(response => {
           console.log(response);
         });
+
+        this.setState({
+          interest : !this.state.interest
+        })
+
+
     } else {
       axios.post('http://52.231.64.73:3001/events/like', {
 
@@ -155,6 +171,10 @@ class DayListTemplate extends Component {
         .then(response => {
           console.log(response);
         });
+        this.setState({
+          interest : !this.state.interest
+        })
+
     }
   }
 

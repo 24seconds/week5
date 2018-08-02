@@ -37,12 +37,14 @@
   background: #8c9bed;
 }
 
+
+
 /* .EventItem-template:hover{
   background: #8a98e6;
 } */
 
 
-.EvenItem-time {
+.EventItem-time {
   padding : 0rem;
   font-size: 1.3rem;
   text-align: center;
@@ -51,9 +53,15 @@
   font-weight: 500;
   background: rgba(255, 255, 255, 0);
   color:#fff;
-
-
 }
+
+.isInterest{
+  color:#f10505;
+  font-weight: 800;
+}
+
+
+
 
 .EvnetItem-location {
   padding : 0rem;

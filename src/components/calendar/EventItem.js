@@ -20,7 +20,7 @@ class EventItem extends Component {
     return(
       <div className = {`EventItem-template ${istoday && 'isToday'}` +
        (diff & !istoday ? ' isPastday' : (isfutureday ? ' isFutureday' : ' nono'))} onMouseOver = {() => handleMouseEnterToItem(eventId)} onClick = {() => handleShow(eventId, interest)}>
-        <div className = "EvenItem-time">
+        <div className = {`EventItem-time ${interest && 'isInterest'}`}>
           {starTime.substring(0,5)} - {endTime.substring(0,5)}
         </div>
         <div className = "EvnetItem-location">
@@ -29,7 +29,7 @@ class EventItem extends Component {
         <div className = "EventItem-title">
           {eventTitle}
         </div>
-        <div>{interest? "관심!" : ""}</div>
+        
       </div>
     );
   }
