@@ -14,11 +14,14 @@ class DayListTemplate extends Component {
     this.state = {
       dayLists : [],
       show: false,
-      detail: ""
+      detail: "",
+      interest : false,
+      event_id: 0,
     }
 
     this.handleClose = this.handleClose.bind(this);
-    this.handleShow = this.handleShow.bind(this)
+    this.handleShow = this.handleShow.bind(this);
+    this.handleUpdateInterest = this.handleUpdateInterest.bind(this);
   }
 
 
@@ -82,19 +85,12 @@ class DayListTemplate extends Component {
       let date = startDate.clone();
       date.add('days', i);
 
-      var user = auth.currentUser;
-      var email;
-      if (user != null) {
-        email=user.email;
-      } else{
-        email='user1';
-      }
 
       axios.post('http://52.231.64.73:3001/events/itemsbydate3', {
           date: date.format("YYYY-MM-DD"),
           filter_keywords: filter_keywords,
           filter_tags: filter_tags,
-          user_id: email
+          user_id: 'user',
       })
       .then(response => {
         // console.log('====================================');
@@ -120,7 +116,7 @@ class DayListTemplate extends Component {
     this.setState({ show: false });
   }
 
-  handleShow(event_id) {
+  handleShow(event_id, interest) {
     axios.get('http://52.231.64.73:3001/events/detailbyid', {
         params: {
           id: event_id
@@ -130,10 +126,36 @@ class DayListTemplate extends Component {
         if(response.data.success) {
           this.setState({
             detail: response.data.detail,
-            show: true
+            show: true,
+            interest: interest,
+            event_id: event_id
           });
         }
       });
+  }
+
+  handleUpdateInterest(interest, event_id) {
+    if(interest) {
+      axios.delete('http://52.231.64.73:3001/events/dislike', {
+          params: {
+            user_id: auth.currentUser.email,
+            event_id: event_id
+          }
+        })
+        .then(response => {
+          console.log(response);
+        });
+    } else {
+      axios.post('http://52.231.64.73:3001/events/like', {
+
+          user_id: auth.currentUser.email,
+          event_id: event_id
+
+        })
+        .then(response => {
+          console.log(response);
+        });
+    }
   }
 
   render() {
@@ -166,7 +188,7 @@ class DayListTemplate extends Component {
           <FloatingButton />
         </div>
         <DetailModal show={this.state.show} handleClose={this.handleClose} title={title} representation={representation} startTime={startTime} endTime={endTime}
-          place={place} summary={summary} tags={tags} detail={this.state.detail}/>
+          place={place} summary={summary} tags={tags} detail={this.state.detail} interest={this.state.interest} event_id={this.state.event_id} handleUpdateInterest={this.handleUpdateInterest}/>
       </div>
     );
   }

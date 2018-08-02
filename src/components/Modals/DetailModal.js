@@ -20,7 +20,7 @@ class DetailModal extends Component {
         );
         const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
 
-        const {title, representation, startTime, endTime, place, summary, tags, detail} = this.props;
+        const {title, representation, startTime, endTime, place, summary, tags, detail, interest, event_id, handleUpdateInterest} = this.props;
 
         return (
             <Modal show={this.props.show} onHide={this.props.handleClose}>
@@ -30,7 +30,7 @@ class DetailModal extends Component {
                     <button className='DetailModal-star'>
                       <Image
                         src={require('../../images/star_yellow.png')} responsive
-                        onClick = {() => console.log('asdfa')} />
+                        onClick = {() => handleUpdateInterest(interest, event_id)} />
                     </button>
                   </div>
 
