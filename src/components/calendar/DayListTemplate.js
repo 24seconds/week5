@@ -27,11 +27,7 @@ class DayListTemplate extends Component {
   }
 
 
-
-
-
-
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {    
     // console.log('shouldComponentUpdate');
     // console.log(this.props.startDate.format("YYYYMMDD"));
     // console.log(nextProps.startDate.format("YYYYMMDD"));

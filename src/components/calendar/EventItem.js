@@ -8,6 +8,8 @@ class EventItem extends Component {
 // if pastdays, gray color text
 // if futuredays, white color text
 
+  
+
 
   render() {
     const {date, eventId, starTime, endTime, location, eventTitle, handleMouseEnterToItem, handleShow, interest} = this.props;
@@ -29,7 +31,7 @@ class EventItem extends Component {
         <div className = "EventItem-title">
           {eventTitle}
         </div>
-        
+
       </div>
     );
   }
